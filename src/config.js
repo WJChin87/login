@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 const connect = mongoose.connect(
-  "mongodb+srv://wingjoechin:9wmnbdslfN8B2qBM@cluster0.xoofv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.xoofv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 );
 
 //check database connected or not
