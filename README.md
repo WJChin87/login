@@ -32,59 +32,9 @@ npm install
 
 # Set up environment variables
 cp .env.example .env
-Configure your .env file:
 
-env
-Copy
+```
+Configure your .env file:
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/auth_db?retryWrites=true&w=majority
 SESSION_SECRET=your_secure_session_secret
 PORT=3000
-Running the Server
-bash
-Copy
-# Development mode (with nodemon)
-npm run dev
-
-# Production mode
-npm start
-Project Structure
-Copy
-src/
-├── config/         # Database and environment setup
-├── controllers/    # Business logic
-├── models/         # MongoDB schemas
-├── routes/         # API endpoints
-├── middlewares/    # Authentication middleware
-├── utils/          # Helper functions
-├── app.js          # Express application
-└── server.js       # Server initialization
-API Documentation
-Authentication Routes
-Endpoint	Method	Description
-/api/register	POST	Register new user
-/api/login	POST	Authenticate existing user
-/api/logout	GET	Terminate user session
-/api/me	GET	Get current user data (protected)
-Example Request
-bash
-Copy
-curl -X POST http://localhost:3000/api/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"user@example.com","password":"securePassword123"}'
-Security Considerations
-All passwords are hashed with bcrypt before storage
-
-Sessions are stored server-side
-
-Sensitive configuration is environment-based
-
-CSRF protection implemented for forms
-
-Roadmap
-Add password reset functionality
-
-Implement rate limiting
-
-Write integration tests
-
-Add Swagger documentation
