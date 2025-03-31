@@ -35,6 +35,16 @@ cp .env.example .env
 
 ```
 Configure your .env file:
+```bash
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/auth_db?retryWrites=true&w=majority
 SESSION_SECRET=your_secure_session_secret
 PORT=3000
+```
+Running the Server
+```bash
+# Development mode (with nodemon)
+npm run dev
+
+# Production mode
+npm start
+```
