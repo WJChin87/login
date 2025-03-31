@@ -33,10 +33,6 @@ npm install
 # Set up environment variables
 cp .env.example .env
 
-Configure your .env file:
-
-env
-Copy
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/auth_db?retryWrites=true&w=majority
 SESSION_SECRET=your_secure_session_secret
 PORT=3000
