@@ -1,92 +1,57 @@
-# 🔐 Node.js Authentication API
+# Basic Login System
 
-A production-ready session authentication system built with Express and MongoDB, following modern backend development practices.
+A simple Node.js login system using sessions and MongoDB.
 
-## Tech Stack
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-4.x-000000?logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-5+-47A248?logo=mongodb&logoColor=white)
+## What's Included
+- Login page (`views/auth/login.ejs`)
+- Register page (`views/auth/register.ejs`) 
+- User model (`models/User.js`)
+- Main app file (`app.js`)
+- Configuration (`config-sample.js`)
 
-## Features
-- **Session-based authentication** with server-side storage
-- **Password hashing** using bcrypt
-- **MVC architecture** with clean separation of concerns
-- **Environment configuration** with dotenv
-- **Error handling middleware** for robust API responses
+## How to Use
 
-## Getting Started
-
-### Prerequisites
-- Node.js 18+
-- MongoDB Atlas or local instance
-- npm or yarn
-
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/your-username/auth-api.git
-cd auth-api
-
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env
-
+1. Rename `config-sample.js` to `config.js`
+2. Edit `config.js` with your MongoDB details:
+```js
+module.exports = {
+  dbUrl: 'mongodb://localhost:27017/login_app',
+  sessionSecret: 'your-secret-key-here'
+}
 ```
-## Configure your .env file:
+3. Install needed packages:
 ```bash
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/auth_db?retryWrites=true&w=majority
-SESSION_SECRET=your_secure_session_secret
-PORT=3000
+npm install express mongoose ejs express-session bcryptjs
 ```
-
-## Running the Server
+4. Start the server:
 ```bash
-# Development mode (with nodemon)
 npm run dev
-
-# Production mode
-npm start
 ```
-
-## Project Structure
+5. Visit in your browser:
 ```bash
-src/
-├── config/         # Database and environment setup
-├── controllers/    # Business logic
-├── models/         # MongoDB schemas
-├── routes/         # API endpoints
-├── middlewares/    # Authentication middleware
-├── utils/          # Helper functions
-├── app.js          # Express application
-└── server.js       # Server initialization
+http://localhost:3000/login
+http://localhost:3000/register
 ```
 
-## API Documentation
-
-Authentication Routes
-Endpoint	Method	Description
-/api/register	POST	Register new user
-/api/login	POST	Authenticate existing user
-/api/logout	GET	Terminate user session
-/api/me	GET	Get current user data (protected)
-
-## Example Request
+## File Structure
 ```bash
-curl -X POST http://localhost:3000/api/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"user@example.com","password":"securePassword123"}'
+login/
+├── views/           # Login/register pages
+│   └── auth/
+│       ├── login.ejs
+│       └── register.ejs
+├── models/          # Database stuff
+│   └── User.js
+├── public/          # CSS/JS
+│   └── styles.css
+├── app.js           # Main server file
+└── config-sample.js # Database config
 ```
 
-## Security Considerations
-- All passwords are hashed with bcrypt before storage
-- Sessions are stored server-side
-- Sensitive configuration is environment-based
-- CSRF protection implemented for forms
+## How It Works
+1. Users register with email/password
+2. Passwords get hashed with bcrypt
+3. Logins create server sessions
+4. Sessions let users stay logged in
 
-## Roadmap
-- Add password reset functionality
-- Implement rate limiting
-- Write integration tests
-- Add Swagger documentation
+That's it! Just Node.js, Express, and MongoDB - no extra frameworks.
